@@ -1,4 +1,4 @@
-package com.sarang.library.compose.restaurantdetail.feed
+package com.sarang.torang.compose.restaurantdetail.feed
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

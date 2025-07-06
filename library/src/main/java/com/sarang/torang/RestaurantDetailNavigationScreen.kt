@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.sarang.library.compose.restaurantdetail.RestaurantDetailScreen
+import com.sarang.torang.compose.restaurantdetail.RestaurantOverViewScreen
 import com.sarang.library.data.Feed
 
 /**
@@ -34,7 +34,7 @@ fun RestaurantDetailNavigationScreen(
 
     NavHost(navController = navController, startDestination = "info") {
         composable("info") {
-            RestaurantDetailScreen(
+            RestaurantOverViewScreen(
                 restaurantId = restaurantId,
                 onCall = onCall,
                 onWeb = onWeb,

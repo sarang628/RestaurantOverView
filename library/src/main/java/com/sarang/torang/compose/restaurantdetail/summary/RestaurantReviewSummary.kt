@@ -1,4 +1,4 @@
-package com.sarang.library.compose.restaurantdetail.summary
+package com.sarang.torang.compose.restaurantdetail.summary
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,8 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.sarang.library.data.ReviewSummaryData
-import com.sarang.library.compose.RestaurantInfoTitle
-import com.sarang.torang.compose.restaurant.detail.components.AndroidViewRatingBar
+import com.sarang.torang.compose.component.AndroidViewRatingBar
+import com.sarang.torang.compose.restaurantdetail.RestaurantInfoTitle
 
 @Composable
 fun RestaurantReviewSummary(viewModel: RestaurantReviewSummaryViewModel = hiltViewModel(), restaurantId : Int, progressTintColor: Color? = null) {

@@ -1,4 +1,4 @@
-package com.sarang.library.compose.restaurantdetail.gallery
+package com.sarang.torang.compose.restaurantdetail.gallery
 
 import android.util.Log
 import androidx.compose.runtime.getValue

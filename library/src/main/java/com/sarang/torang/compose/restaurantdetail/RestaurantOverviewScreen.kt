@@ -1,4 +1,4 @@
-package com.sarang.library.compose.restaurantdetail
+package com.sarang.torang.compose.restaurantdetail
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
@@ -14,16 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import com.sarang.library.compose.LocalDetailRestaurantInfo
-import com.sarang.library.compose.LocalPullToRefresh
-import com.sarang.library.compose.RestaurantInfoTitle
-import com.sarang.library.compose.restaurantdetail.feed.RestaurantFeeds
+import com.sarang.torang.compose.type.LocalDetailRestaurantInfo
+import com.sarang.torang.compose.type.LocalPullToRefresh
+import com.sarang.torang.compose.restaurantdetail.feed.RestaurantFeeds
 import com.sarang.library.compose.restaurantdetail.gallery.RestaurantImages
-import com.sarang.library.compose.restaurantdetail.menu.RestaurantMenus
+import com.sarang.torang.compose.restaurantdetail.menu.RestaurantMenus
 import com.sarang.library.compose.restaurantdetail.review.RestaurantReviews
-import com.sarang.library.compose.restaurantdetail.summary.RestaurantReviewSummary
+import com.sarang.torang.compose.restaurantdetail.summary.RestaurantReviewSummary
 import com.sarang.library.data.Feed
-import com.sarang.torang.compose.restaurant.detail.components.RestaurantReservation
 
 enum class RestaurantDetailOrder{
     RestaurantInfo,
@@ -38,8 +36,8 @@ enum class RestaurantDetailOrder{
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RestaurantDetailScreen(
-    tag: String = "__RestaurantInfoScreen",
+fun RestaurantOverViewScreen(
+    tag: String = "__RestaurantOverViewScreen",
     restaurantId : Int,
     modifier: Modifier = Modifier,
     onRefresh: () -> Unit = { Log.w(tag, "onRefresh is null") },

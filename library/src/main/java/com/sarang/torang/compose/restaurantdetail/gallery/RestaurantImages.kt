@@ -14,7 +14,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.sarang.library.data.RestaurantImage
-import com.sarang.library.compose.LocalRestaurantDetailImageLoader
+import com.sarang.torang.compose.type.LocalRestaurantOverViewImageLoader
+import com.sarang.torang.compose.restaurantdetail.gallery.RestaurantGalleryViewModel
 
 @Composable
 fun RestaurantImages(
@@ -29,7 +30,7 @@ fun RestaurantImages(
     if (uiState.isNotEmpty()) {
         LazyRow(Modifier.height(150.dp).fillMaxWidth()) {
             items(uiState.size, itemContent = {
-                LocalRestaurantDetailImageLoader.current.invoke(Modifier.height(150.dp).width(150.dp).clickable { onImage?.invoke(uiState[it].id) }, uiState[it].url, 30.dp, 30.dp, ContentScale.Crop)
+                LocalRestaurantOverViewImageLoader.current.invoke(Modifier.height(150.dp).width(150.dp).clickable { onImage?.invoke(uiState[it].id) }, uiState[it].url, 30.dp, 30.dp, ContentScale.Crop)
                 Spacer(modifier = Modifier.width(8.dp))
             })
         }
@@ -44,7 +45,7 @@ private fun RestaurantImages(
     if (!list.isNullOrEmpty()) {
         LazyRow(Modifier.height(150.dp).fillMaxWidth()) {
             items(list.size, itemContent = {
-                LocalRestaurantDetailImageLoader.current.invoke(Modifier.height(150.dp).width(150.dp).clickable { onImage?.invoke(list[it].id) }, list[it].url, 30.dp, 30.dp, ContentScale.Crop)
+                LocalRestaurantOverViewImageLoader.current.invoke(Modifier.height(150.dp).width(150.dp).clickable { onImage?.invoke(list[it].id) }, list[it].url, 30.dp, 30.dp, ContentScale.Crop)
                 Spacer(modifier = Modifier.width(8.dp))
             })
         }

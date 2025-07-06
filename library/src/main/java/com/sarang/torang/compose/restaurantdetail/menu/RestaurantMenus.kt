@@ -1,4 +1,4 @@
-package com.sarang.library.compose.restaurantdetail.menu
+package com.sarang.torang.compose.restaurantdetail.menu
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.sarang.library.data.MenuData
-import com.sarang.library.compose.RestaurantInfoTitle
+import com.sarang.torang.compose.restaurantdetail.RestaurantInfoTitle
 
 
 @Composable

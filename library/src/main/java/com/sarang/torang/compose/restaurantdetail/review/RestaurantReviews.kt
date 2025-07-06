@@ -24,8 +24,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.sarang.library.data.ReviewRowData
-import com.sarang.library.compose.RestaurantInfoTitle
-import com.sarang.torang.compose.restaurant.detail.components.AndroidViewRatingBar
+import com.sarang.torang.compose.component.AndroidViewRatingBar
+import com.sarang.torang.compose.restaurantdetail.RestaurantInfoTitle
+import com.sarang.torang.compose.restaurantdetail.review.RestaurantReviewViewModel
 
 @Composable
 fun RestaurantReviews(viewModel: RestaurantReviewViewModel = hiltViewModel(), restaurantId : Int, progressTintColor: Color? = null, onProfile: (Int) -> Unit, onContents: (Int) -> Unit, ) {

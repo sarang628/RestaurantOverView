@@ -1,4 +1,4 @@
-package com.sarang.torang.compose.restaurant.detail.components
+package com.sarang.torang.compose.restaurantdetail
 
 import androidx.compose.foundation.gestures.awaitEachGesture
 import androidx.compose.foundation.gestures.awaitFirstDown
@@ -26,7 +26,6 @@ import androidx.compose.ui.input.pointer.PointerEventPass
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.sarang.library.compose.RestaurantInfoTitle
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

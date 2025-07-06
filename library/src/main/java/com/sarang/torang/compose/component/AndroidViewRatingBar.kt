@@ -1,4 +1,4 @@
-package com.sarang.torang.compose.restaurant.detail.components
+package com.sarang.torang.compose.component
 
 import android.R
 import android.content.res.ColorStateList

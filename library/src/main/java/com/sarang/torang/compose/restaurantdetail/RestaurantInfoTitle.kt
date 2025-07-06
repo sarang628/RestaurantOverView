@@ -1,4 +1,4 @@
-package com.sarang.library.compose
+package com.sarang.torang.compose.restaurantdetail
 
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +13,6 @@ fun RestaurantInfoTitle(title: String) {
 
 @Preview
 @Composable
-fun RestaurantInfoTitle() {
+fun RestaurantInfoTitlePreview() {
     RestaurantInfoTitle(title = "메뉴 타이틀")
 }

@@ -1,4 +1,4 @@
-package com.sarang.library.compose
+package com.sarang.torang.compose.type
 
 import android.util.Log
 import androidx.compose.runtime.Composable
@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.Dp
 
-typealias RestaurantDetailImageLoader = @Composable (
+typealias RestaurantOverViewImageLoader = @Composable (
     modifier: Modifier,
     url: String,
     width: Dp?,
@@ -15,7 +15,7 @@ typealias RestaurantDetailImageLoader = @Composable (
     contentScale: ContentScale?
 ) -> Unit
 
-val LocalRestaurantDetailImageLoader = compositionLocalOf<RestaurantDetailImageLoader> {
+val LocalRestaurantOverViewImageLoader = compositionLocalOf<RestaurantOverViewImageLoader> {
     // 기본 구현: 경고 로그 출력
     @Composable { _, _, _, _, _ ->
         Log.w("__ImageLoader", "No ImageLoader provided.")

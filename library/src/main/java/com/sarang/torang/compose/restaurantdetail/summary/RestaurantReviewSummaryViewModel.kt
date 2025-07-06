@@ -1,4 +1,4 @@
-package com.sarang.library.compose.restaurantdetail.summary
+package com.sarang.torang.compose.restaurantdetail.summary
 
 import android.util.Log
 import androidx.compose.runtime.getValue
