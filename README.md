@@ -37,7 +37,6 @@ implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
 CompositionLocalProvider(
     LocalRestaurantOverViewImageLoader provides restaurantOverViewImageLoader,
     LocalRestaurantOverviewRestaurantInfo provides restaurantOverViewRestaurantInfo,
-    LocalRestaurantInfoImageLoader provides restaurantInfoImageLoader
 ) {
     RestaurantOverViewScreen(restaurantId = 234)
 }
@@ -48,7 +47,9 @@ val restaurantOverViewImageLoader: RestaurantOverViewImageLoader = { modifier, u
 }
 
 val restaurantOverViewRestaurantInfo: RestaurantOverviewRestaurantInfo = {
-    RestaurantInfoWithPermission(restaurantId = it, viewModel = BestPracticeViewModel())
+    CompositionLocalProvider(LocalRestaurantInfoImageLoader provides restaurantInfoImageLoader){
+        RestaurantInfoWithPermission(restaurantId = it, viewModel = BestPracticeViewModel())
+    }
 }
 
 val restaurantInfoImageLoader: RestaurantInfoImageLoader = { modifier, url, width, height, scale ->

@@ -26,7 +26,6 @@ class MainActivity : ComponentActivity() {
                 CompositionLocalProvider(
                     LocalRestaurantOverViewImageLoader provides restaurantOverViewImageLoader,
                     LocalRestaurantOverviewRestaurantInfo provides restaurantOverViewRestaurantInfo,
-                    LocalRestaurantInfoImageLoader provides restaurantInfoImageLoader
                 ) {
                     RestaurantOverViewScreen(restaurantId = 234)
                 }
@@ -35,16 +34,3 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-val restaurantOverViewImageLoader: RestaurantOverViewImageLoader = { modifier, url, width, height, scale ->
-    // 여기서 실제 이미지 로딩 구현 예시
-    provideTorangAsyncImage().invoke(modifier, url, width, height, scale)
-}
-
-val restaurantOverViewRestaurantInfo: RestaurantOverviewRestaurantInfo = {
-    RestaurantInfoWithPermission(restaurantId = it, viewModel = BestPracticeViewModel())
-}
-
-val restaurantInfoImageLoader: RestaurantInfoImageLoader = { modifier, url, width, height, scale ->
-    // 여기서 실제 이미지 로딩 구현 예시
-    provideTorangAsyncImage().invoke(modifier, url, width, height, scale)
-}
