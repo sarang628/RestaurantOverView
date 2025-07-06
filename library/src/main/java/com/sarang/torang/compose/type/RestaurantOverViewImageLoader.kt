@@ -18,6 +18,6 @@ typealias RestaurantOverViewImageLoader = @Composable (
 val LocalRestaurantOverViewImageLoader = compositionLocalOf<RestaurantOverViewImageLoader> {
     // 기본 구현: 경고 로그 출력
     @Composable { _, _, _, _, _ ->
-        Log.w("__ImageLoader", "No ImageLoader provided.")
+        Log.w("__RestaurantOverViewImageLoader", "No RestaurantOverViewImageLoader provided.")
     }
 }

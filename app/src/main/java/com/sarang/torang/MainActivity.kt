@@ -5,11 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.CompositionLocalProvider
-import com.sarang.torang.compose.type.RestaurantOverviewRestaurantInfo
-import com.sarang.torang.compose.type.LocalDetailRestaurantInfo
-import com.sarang.torang.compose.type.LocalRestaurantOverViewImageLoader
-import com.sarang.torang.compose.type.RestaurantOverViewImageLoader
 import com.sarang.torang.compose.restaurantdetail.RestaurantOverViewScreen
+import com.sarang.torang.compose.type.LocalRestaurantOverViewImageLoader
+import com.sarang.torang.compose.type.LocalRestaurantOverviewRestaurantInfo
+import com.sarang.torang.compose.type.RestaurantOverViewImageLoader
+import com.sarang.torang.compose.type.RestaurantOverviewRestaurantInfo
 import com.sarang.torang.di.image.provideTorangAsyncImage
 import com.sarang.torang.di.restaurant_info.RestaurantInfoWithPermission
 import com.sryang.library.compose.workflow.BestPracticeViewModel
@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
             TorangTheme {
                 CompositionLocalProvider(
                     LocalRestaurantOverViewImageLoader provides restaurantOverViewImageLoader,
-                    LocalDetailRestaurantInfo provides restaurantOverViewRestaurantInfo,
+                    LocalRestaurantOverviewRestaurantInfo provides restaurantOverViewRestaurantInfo,
                     LocalRestaurantInfoImageLoader provides restaurantInfoImageLoader
                 ) {
                     RestaurantOverViewScreen(restaurantId = 234)

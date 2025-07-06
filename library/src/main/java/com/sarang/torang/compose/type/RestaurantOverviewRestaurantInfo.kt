@@ -9,8 +9,8 @@ typealias RestaurantOverviewRestaurantInfo = @Composable (
 ) -> Unit
 
 
-val LocalDetailRestaurantInfo = compositionLocalOf<RestaurantOverviewRestaurantInfo> {
+val LocalRestaurantOverviewRestaurantInfo = compositionLocalOf<RestaurantOverviewRestaurantInfo> {
     @Composable {
-        Log.w("__RestaurantInfo", "no RestaurantInfo compose")
+        Log.w("__RestaurantOverviewRestaurantInfo", "no RestaurantInfo compose")
     }
 }

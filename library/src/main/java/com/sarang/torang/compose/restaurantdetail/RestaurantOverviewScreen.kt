@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
-import com.sarang.torang.compose.type.LocalDetailRestaurantInfo
+import com.sarang.torang.compose.type.LocalRestaurantOverviewRestaurantInfo
 import com.sarang.torang.compose.type.LocalPullToRefresh
 import com.sarang.torang.compose.restaurantdetail.feed.RestaurantFeeds
 import com.sarang.library.compose.restaurantdetail.gallery.RestaurantImages
@@ -60,7 +60,7 @@ fun RestaurantOverViewScreen(
             items(RestaurantDetailOrder.values().size) {
                 when(RestaurantDetailOrder.values()[it]){
                     RestaurantDetailOrder.RestaurantInfo -> { // 레스토랑 기본정보
-                        LocalDetailRestaurantInfo.current.invoke(restaurantId)
+                        LocalRestaurantOverviewRestaurantInfo.current.invoke(restaurantId)
                         Spacer(modifier = Modifier.height(8.dp))
                     }
 

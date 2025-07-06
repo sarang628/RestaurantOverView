@@ -36,11 +36,12 @@ implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
 ```
 CompositionLocalProvider(
     LocalRestaurantOverViewImageLoader provides restaurantOverViewImageLoader,
-    LocalDetailRestaurantInfo provides restaurantOverViewRestaurantInfo,
+    LocalRestaurantOverviewRestaurantInfo provides restaurantOverViewRestaurantInfo,
     LocalRestaurantInfoImageLoader provides restaurantInfoImageLoader
 ) {
     RestaurantOverViewScreen(restaurantId = 234)
 }
+
 val restaurantOverViewImageLoader: RestaurantOverViewImageLoader = { modifier, url, width, height, scale ->
     // 여기서 실제 이미지 로딩 구현 예시
     provideTorangAsyncImage().invoke(modifier, url, width, height, scale)
