@@ -9,8 +9,12 @@ dependencyResolutionManagement {
 }
 
 dependencies {
-    implementation("com.github.sarang628:RestaurantOverView:")
+    implementation("com.github.sarang628:RestaurantOverView:27bd106ba5")
 }
+```
+
+```
+git submodule add (or git clone) https://github.com/sarang628/restaurant_overview_di.git
 ```
 
 ## [Hilt 추가](https://github.com/sarang628/HiltTest?tab=readme-ov-file#for-torang)
