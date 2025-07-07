@@ -8,11 +8,8 @@ import androidx.compose.runtime.CompositionLocalProvider
 import com.sarang.torang.compose.restaurantdetail.RestaurantOverViewScreen
 import com.sarang.torang.compose.type.LocalRestaurantOverViewImageLoader
 import com.sarang.torang.compose.type.LocalRestaurantOverviewRestaurantInfo
-import com.sarang.torang.compose.type.RestaurantOverViewImageLoader
-import com.sarang.torang.compose.type.RestaurantOverviewRestaurantInfo
-import com.sarang.torang.di.image.provideTorangAsyncImage
-import com.sarang.torang.di.restaurant_info.RestaurantInfoWithPermission
-import com.sryang.library.compose.workflow.BestPracticeViewModel
+import com.sarang.torang.di.restaurant_overview_di.restaurantOverViewImageLoader
+import com.sarang.torang.di.restaurant_overview_di.restaurantOverViewRestaurantInfo
 import com.sryang.torang.ui.TorangTheme
 import dagger.hilt.android.AndroidEntryPoint
 

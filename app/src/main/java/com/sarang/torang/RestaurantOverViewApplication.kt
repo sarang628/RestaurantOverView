@@ -11,19 +11,3 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class RestaurantOverViewApplication : Application()
-
-val restaurantOverViewImageLoader: RestaurantOverViewImageLoader = { modifier, url, width, height, scale ->
-    // 여기서 실제 이미지 로딩 구현 예시
-    provideTorangAsyncImage().invoke(modifier, url, width, height, scale)
-}
-
-val restaurantOverViewRestaurantInfo: RestaurantOverviewRestaurantInfo = {
-    CompositionLocalProvider(LocalRestaurantInfoImageLoader provides restaurantInfoImageLoader){
-        RestaurantInfoWithPermission(restaurantId = it, viewModel = BestPracticeViewModel())
-    }
-}
-
-val restaurantInfoImageLoader: RestaurantInfoImageLoader = { modifier, url, width, height, scale ->
-    // 여기서 실제 이미지 로딩 구현 예시
-    provideTorangAsyncImage().invoke(modifier, url, width, height, scale)
-}
