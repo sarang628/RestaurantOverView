@@ -23,15 +23,7 @@ git submodule add (or git clone) https://github.com/sarang628/restaurant_overvie
 
 RestaurantFeedsViewModel 의 usecase를 주입해 줘야함.
 
-```
-git submodule add (or git clone) https://github.com/sarang628/restauarnt_info_di.git
-git submodule add (or git clone) https://github.com/sarang628/restaurant_detail_di.git
-implementation("com.github.sarang628:RestaurantInfo:acb554a878")
-implementation("com.github.sarang628:ComposePermissionTest:5159bc3d34")
-implementation("com.google.accompanist:accompanist-permissions:0.32.0")
-implementation("com.google.android.gms:play-services-location:21.1.0")
-implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.7.3")
-```
+## [RestaurantInfo 추가](https://github.com/sarang628/RestaurantInfo)
 
 ## [usecase에 필요한 저장소를 추가](https://github.com/sarang628/TorangRepository?tab=readme-ov-file#%EB%AA%A8%EB%93%88-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0)
 
