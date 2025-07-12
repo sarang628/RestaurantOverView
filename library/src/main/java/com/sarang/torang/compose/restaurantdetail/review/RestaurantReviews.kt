@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.sarang.library.data.ReviewRowData
-import com.sarang.torang.compose.component.AndroidViewRatingBar
+import com.sarang.torang.compose.component.AndroidViewRatingBarInRestaurantOverView
 import com.sarang.torang.compose.restaurantdetail.RestaurantInfoTitle
 import com.sarang.torang.compose.restaurantdetail.review.RestaurantReviewViewModel
 
@@ -74,7 +74,7 @@ fun ReviewRow(name: String, fullName: String, rating: Float, comment: String, pr
         Column {
             Row {
                 Text(text = fullName, Modifier.clickable { onProfile.invoke() })
-                AndroidViewRatingBar(rating = rating, progressTintColor = progressTintColor)
+                AndroidViewRatingBarInRestaurantOverView(rating = rating, progressTintColor = progressTintColor)
                 Text(text = rating.toString())
             }
             Text(text = comment, maxLines = 3, overflow = TextOverflow.Ellipsis, modifier = Modifier.clickable { onContents.invoke() }) }

@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.sarang.library.data.ReviewSummaryData
-import com.sarang.torang.compose.component.AndroidViewRatingBar
+import com.sarang.torang.compose.component.AndroidViewRatingBarInRestaurantOverView
 import com.sarang.torang.compose.restaurantdetail.RestaurantInfoTitle
 
 @Composable
@@ -43,7 +43,7 @@ fun RestaurantReviewSummary(viewModel: RestaurantReviewSummaryViewModel = hiltVi
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(text = uiState.rating.toString(), fontSize = 30.sp)
-                AndroidViewRatingBar(rating = uiState.rating, progressTintColor = progressTintColor)
+                AndroidViewRatingBarInRestaurantOverView(rating = uiState.rating, progressTintColor = progressTintColor)
                 Text(text = "(${uiState.totalReviewer})")
             }
             Spacer(modifier = Modifier.width(5.dp))
@@ -75,7 +75,7 @@ private fun RestaurantReviewSummary(data: ReviewSummaryData, progressTintColor: 
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(text = data.rating.toString(), fontSize = 30.sp)
-                AndroidViewRatingBar(rating = data.rating, progressTintColor = progressTintColor)
+                AndroidViewRatingBarInRestaurantOverView(rating = data.rating, progressTintColor = progressTintColor)
                 Text(text = "(${data.totalReviewer})")
             }
             Spacer(modifier = Modifier.width(5.dp))

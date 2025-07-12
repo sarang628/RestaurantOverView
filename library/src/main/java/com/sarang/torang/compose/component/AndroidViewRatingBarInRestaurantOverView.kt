@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.AndroidView
 
 @Composable
-internal fun AndroidViewRatingBar(
+internal fun AndroidViewRatingBarInRestaurantOverView(
     modifier: Modifier = Modifier,
     rating: Float,
     isSmall: Boolean = true,
