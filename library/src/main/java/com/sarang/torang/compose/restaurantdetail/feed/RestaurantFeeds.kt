@@ -19,7 +19,7 @@ fun RestaurantFeeds(
 
     Column {
             for (i in 0 until uiState.size) {
-                LocalRestaurantFeed.current.invoke(uiState[i], {}, {}, false, {}, 300, false)
+                LocalRestaurantFeed.current.invoke(uiState[i], {}, {}, false, {}, 300, true)
             }
     }
 }

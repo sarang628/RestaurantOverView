@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     LocalExpandableTextType provides CustomExpandableTextType,
                     LocalFeedImageLoader provides CustomFeedImageLoader
                 ) {
-                    RestaurantOverViewScreen(restaurantId = 234)
+                    RestaurantOverViewScreen(restaurantId = 1)
                 }
             }
         }
