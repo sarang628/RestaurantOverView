@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.sarang.library.data.Feed
+import com.sarang.torang.data.FeedInRestaurant
 import com.sarang.library.usecase.FetchReviewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,7 +16,7 @@ class RestaurantFeedsViewModel @Inject constructor(
     val fetchReviewUseCase: FetchReviewsUseCase
 ) : ViewModel() {
 
-    var uiState: List<Feed> by mutableStateOf(ArrayList())
+    var uiState: List<FeedInRestaurant> by mutableStateOf(ArrayList())
 
     fun fetch(restaurantId: Int) {
         viewModelScope.launch {

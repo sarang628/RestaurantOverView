@@ -9,7 +9,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.sarang.torang.compose.restaurantdetail.RestaurantOverViewScreen
-import com.sarang.library.data.Feed
 
 /**
  * @param map map compose
@@ -27,8 +26,7 @@ fun RestaurantDetailNavigationScreen(
     onProfile: (Int) -> Unit = { Log.w(tag, "onProfile is null") },
     onContents: (Int) -> Unit = { Log.w(tag, "onContents is null") },
     map: @Composable (restaurantName: String, latitude: Double, longitude: Double, foodType: String) -> Unit = { _, _, _, _ -> Log.w(tag, "map is null") },
-    onError: (String) -> Unit = { Log.w(tag, "feed doesn't set") },
-    feed: @Composable (Feed) -> Unit = { Log.w(tag, "feed doesn't set") },
+    onError: (String) -> Unit = { Log.w(tag, "feed doesn't set") }
 ) {
     val navController = rememberNavController()
 
@@ -43,8 +41,7 @@ fun RestaurantDetailNavigationScreen(
                 scrollBehavior = scrollBehavior,
                 progressTintColor = progressTintColor,
                 onContents = onContents,
-                onProfile = onProfile,
-                feed = feed,
+                onProfile = onProfile
             )
         }
         composable("map") {

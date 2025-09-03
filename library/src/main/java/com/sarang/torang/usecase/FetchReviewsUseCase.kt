@@ -1,7 +1,7 @@
 package com.sarang.library.usecase
 
-import com.sarang.library.data.Feed
+import com.sarang.torang.data.FeedInRestaurant
 
 interface FetchReviewsUseCase {
-    suspend fun invoke(restaurantId: Int) : List<Feed>
+    suspend fun invoke(restaurantId: Int) : List<FeedInRestaurant>
 }

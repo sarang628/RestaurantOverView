@@ -1,6 +1,6 @@
-package com.sarang.library.data
+package com.sarang.torang.data
 
-data class Feed(
+data class FeedInRestaurant(
     val reviewId: Int,
     val restaurantId: Int,
     val userId: Int,
@@ -21,10 +21,10 @@ data class Feed(
     val visibleLike: Boolean,
     val visibleComment: Boolean,
     val contents: String,
-    val reviewImages: List<String> = ArrayList()
+    val reviewImages: List<FeedImageInRestaurant> = listOf()
 ) {
     companion object {
-        fun empty() = Feed(
+        fun empty() = FeedInRestaurant(
             reviewId = 0,
             restaurantId = 0,
             userId = 0,

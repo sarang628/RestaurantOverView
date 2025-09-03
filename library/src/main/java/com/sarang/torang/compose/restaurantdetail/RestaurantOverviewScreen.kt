@@ -21,7 +21,6 @@ import com.sarang.library.compose.restaurantdetail.gallery.RestaurantImages
 import com.sarang.torang.compose.restaurantdetail.menu.RestaurantMenus
 import com.sarang.library.compose.restaurantdetail.review.RestaurantReviews
 import com.sarang.torang.compose.restaurantdetail.summary.RestaurantReviewSummary
-import com.sarang.library.data.Feed
 
 enum class RestaurantDetailOrder{
     RestaurantInfo,
@@ -48,8 +47,7 @@ fun RestaurantOverViewScreen(
     progressTintColor: Color? = null,
     onProfile: (Int) -> Unit = { Log.w(tag, "onProfile is null") },
     onContents: (Int) -> Unit = { Log.w(tag, "onContents is null") },
-    scrollBehavior: TopAppBarScrollBehavior? = null,
-    feed: @Composable (Feed) -> Unit = { Log.w(tag, "feed is null") },
+    scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
 
     LocalPullToRefresh.current.invoke(false, { onRefresh.invoke() }) {
@@ -71,9 +69,9 @@ fun RestaurantOverViewScreen(
                     }
 
                     RestaurantDetailOrder.RestaurantMenu -> { // 메뉴
-                        Column(Modifier.padding(start = 8.dp, end = 8.dp)) {
-                            RestaurantInfoTitle(title = "Menus")
-                        }
+//                        Column(Modifier.padding(start = 8.dp, end = 8.dp)) {
+//                            RestaurantInfoTitle(title = "Menus")
+//                        }
                     }
 
                     RestaurantDetailOrder.RestaurantMenus -> { // 메뉴
@@ -86,12 +84,13 @@ fun RestaurantOverViewScreen(
                     }
 
                     RestaurantDetailOrder.RestaurantReviews -> { // 리뷰
-                        RestaurantReviews(restaurantId = restaurantId, progressTintColor = progressTintColor, onProfile = onProfile, onContents = onContents)
+                        //RestaurantReviews(restaurantId = restaurantId, progressTintColor = progressTintColor, onProfile = onProfile, onContents = onContents)
                     }
 
                     RestaurantDetailOrder.Feed -> { // 피드
                         Box(Modifier.padding(start = 8.dp, end = 8.dp)) { RestaurantInfoTitle(title = "Reviews") }
-                        RestaurantFeeds(restaurantId = restaurantId, feed = feed)
+                        Spacer(Modifier.height(8.dp))
+                        RestaurantFeeds(restaurantId = restaurantId)
                     }
 
                     RestaurantDetailOrder.RestaurantReservation -> {

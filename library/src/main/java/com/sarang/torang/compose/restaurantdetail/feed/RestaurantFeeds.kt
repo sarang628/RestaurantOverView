@@ -4,13 +4,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.sarang.library.data.Feed
 
 @Composable
 fun RestaurantFeeds(
     restaurantId: Int,
     viewModel: RestaurantFeedsViewModel = hiltViewModel(),
-    feed: @Composable (Feed) -> Unit = {}
 ) {
 
     val uiState = viewModel.uiState
@@ -20,10 +18,8 @@ fun RestaurantFeeds(
     }
 
     Column {
-        //if (uiState.isNotEmpty()) {
             for (i in 0 until uiState.size) {
-                feed.invoke(uiState[i])
+                LocalRestaurantFeed.current.invoke(uiState[i], {}, {}, false, {}, 300, false)
             }
-        //}
     }
 }
