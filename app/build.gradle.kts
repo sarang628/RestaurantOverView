@@ -100,6 +100,8 @@ dependencies {
     implementation(libs.lifecycle.runtime.compose)
 
     implementation(libs.torangRepository)
+    implementation(libs.torangnetwork)
+    implementation(libs.torangdatabase)
     implementation(libs.theme)
     implementation(libs.commonImageLoader)
     implementation(libs.restaurantInfo)
@@ -107,4 +109,15 @@ dependencies {
     implementation(libs.play.services.location)
     implementation(libs.kotlin.coroutines.play)
     implementation(libs.composePermissionTest)
+
+    //feed
+    implementation(libs.basefeed)
+    implementation(libs.feed)
+    implementation(libs.mui3scrolltorefresh)
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
+    implementation("androidx.media3:media3-session:1.4.0")
+    implementation("androidx.media3:media3-exoplayer-hls:1.4.0")
+    implementation(libs.bottomdetectlazycolunm)
+    implementation(libs.expandableText)
 }
