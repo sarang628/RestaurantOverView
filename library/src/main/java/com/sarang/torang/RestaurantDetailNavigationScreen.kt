@@ -16,17 +16,17 @@ import com.sarang.torang.compose.restaurantdetail.RestaurantOverViewScreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RestaurantDetailNavigationScreen(
-    tag : String = "__RestaurantDetailNavigationScreen",
-    restaurantId: Int,
-    progressTintColor: Color? = null,
-    scrollBehavior: TopAppBarScrollBehavior? = null,
-    onWeb: (String) -> Unit = { Log.w(tag, "onWeb is null") },
-    onCall: (String) -> Unit = { Log.w(tag, "onCall is null") },
-    onImage: (Int) -> Unit = { Log.w(tag, "onImage is null") },
-    onProfile: (Int) -> Unit = { Log.w(tag, "onProfile is null") },
-    onContents: (Int) -> Unit = { Log.w(tag, "onContents is null") },
-    map: @Composable (restaurantName: String, latitude: Double, longitude: Double, foodType: String) -> Unit = { _, _, _, _ -> Log.w(tag, "map is null") },
-    onError: (String) -> Unit = { Log.w(tag, "feed doesn't set") }
+    tag                 : String                    = "__RestaurantDetailNavigationScreen",
+    restaurantId        : Int,
+    progressTintColor   : Color?                    = null,
+    scrollBehavior      : TopAppBarScrollBehavior?  = null,
+    onWeb               : (String) -> Unit          = { Log.w(tag, "onWeb is null") },
+    onCall              : (String) -> Unit          = { Log.w(tag, "onCall is null") },
+    onImage             : (Int) -> Unit             = { Log.w(tag, "onImage is null") },
+    onProfile           : (Int) -> Unit             = { Log.w(tag, "onProfile is null") },
+    onContents          : (Int) -> Unit             = { Log.w(tag, "onContents is null") },
+    onError             : (String) -> Unit          = { Log.w(tag, "feed doesn't set") },
+    map                 : @Composable (restaurantName: String, latitude: Double, longitude: Double, foodType: String) -> Unit = { _, _, _, _ -> Log.w(tag, "map is null") }
 ) {
     val navController = rememberNavController()
 
