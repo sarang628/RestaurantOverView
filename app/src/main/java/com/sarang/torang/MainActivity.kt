@@ -9,11 +9,14 @@ import com.sarang.torang.compose.feed.internal.components.LocalExpandableTextTyp
 import com.sarang.torang.compose.feed.internal.components.LocalFeedImageLoader
 import com.sarang.torang.compose.restaurantdetail.RestaurantOverViewScreen
 import com.sarang.torang.compose.restaurantdetail.feed.LocalRestaurantFeed
+import com.sarang.torang.compose.type.LocalPullToRefresh
 import com.sarang.torang.compose.type.LocalRestaurantOverViewImageLoader
 import com.sarang.torang.compose.type.LocalRestaurantOverviewRestaurantInfo
 import com.sarang.torang.di.basefeed_di.CustomExpandableTextType
 import com.sarang.torang.di.basefeed_di.CustomFeedImageLoader
+import com.sarang.torang.di.feed_di.CustomPullToRefreshType
 import com.sarang.torang.di.restaurant_overview_di.CustomRestaurantFeedType
+import com.sarang.torang.di.restaurant_overview_di.CustomRestaurantOverviewPullToRefreshType
 import com.sarang.torang.di.restaurant_overview_di.restaurantOverViewImageLoader
 import com.sarang.torang.di.restaurant_overview_di.restaurantOverViewRestaurantInfo
 import com.sryang.torang.ui.TorangTheme
@@ -28,10 +31,11 @@ class MainActivity : ComponentActivity() {
             TorangTheme {
                 CompositionLocalProvider(
                     LocalRestaurantOverViewImageLoader provides restaurantOverViewImageLoader,
-                    LocalRestaurantOverviewRestaurantInfo provides restaurantOverViewRestaurantInfo,
+                    LocalRestaurantOverviewRestaurantInfo provides restaurantOverViewRestaurantInfo(RootNavController()),
                     LocalRestaurantFeed provides CustomRestaurantFeedType,
                     LocalExpandableTextType provides CustomExpandableTextType,
-                    LocalFeedImageLoader provides CustomFeedImageLoader
+                    LocalFeedImageLoader provides CustomFeedImageLoader,
+                    LocalPullToRefresh provides CustomRestaurantOverviewPullToRefreshType
                 ) {
                     RestaurantOverViewScreen(restaurantId = 1)
                 }
