@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.sarang.torang.compose.type.LocalRestaurantOverviewRestaurantInfo
 import com.sarang.torang.compose.type.LocalPullToRefresh
 import com.sarang.torang.compose.restaurantdetail.feed.RestaurantFeeds
@@ -22,35 +23,34 @@ import com.sarang.torang.compose.restaurantdetail.menu.RestaurantMenus
 import com.sarang.library.compose.restaurantdetail.review.RestaurantReviews
 import com.sarang.torang.compose.restaurantdetail.summary.RestaurantReviewSummary
 
-enum class RestaurantDetailOrder{
+enum class RestaurantDetailOrder {
     RestaurantInfo,
     RestaurantReservation,
     RestaurantImages,
-    RestaurantMenu,
     RestaurantMenus,
     RestaurantReviewSummary,
-    RestaurantReviews,
     Feed
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RestaurantOverViewScreen(
-    tag: String = "__RestaurantOverViewScreen",
-    restaurantId : Int,
-    modifier: Modifier = Modifier,
-    onRefresh: () -> Unit = { Log.w(tag, "onRefresh is null") },
-    onLocation: () -> Unit = { Log.w(tag, "onLocation is null") },
-    onWeb: (String) -> Unit = { Log.w(tag, "onWeb is null") },
-    onCall: (String) -> Unit = { Log.w(tag, "onCall is null") },
-    onImage: (Int) -> Unit = { Log.w(tag, "onImage is null") },
-    progressTintColor: Color? = null,
-    onProfile: (Int) -> Unit = { Log.w(tag, "onProfile is null") },
-    onContents: (Int) -> Unit = { Log.w(tag, "onContents is null") },
-    scrollBehavior: TopAppBarScrollBehavior? = null
+    tag                 : String                        = "__RestaurantOverViewScreen",
+    viewModel           : RestaurantOverviewViewModel   = hiltViewModel(),
+    restaurantId        : Int,
+    modifier            : Modifier                      = Modifier,
+    onRefresh           : () -> Unit                    = { Log.w(tag, "onRefresh is null") },
+    onLocation          : () -> Unit                    = { Log.w(tag, "onLocation is null") },
+    onWeb               : (String) -> Unit              = { Log.w(tag, "onWeb is null") },
+    onCall              : (String) -> Unit              = { Log.w(tag, "onCall is null") },
+    onImage             : (Int) -> Unit                 = { Log.w(tag, "onImage is null") },
+    progressTintColor   : Color?                        = null,
+    onProfile           : (Int) -> Unit                 = { Log.w(tag, "onProfile is null") },
+    onContents          : (Int) -> Unit                 = { Log.w(tag, "onContents is null") },
+    scrollBehavior      : TopAppBarScrollBehavior?      = null
 ) {
 
-    LocalPullToRefresh.current.invoke(false, { onRefresh.invoke() }) {
+    LocalPullToRefresh.current.invoke(Modifier, viewModel.isLoading, { viewModel.onRefresh() }) {
         LazyColumn(
             modifier = if (scrollBehavior != null) modifier.nestedScroll(scrollBehavior.nestedScrollConnection) else Modifier
         )
@@ -68,12 +68,6 @@ fun RestaurantOverViewScreen(
                         Spacer(modifier = Modifier.height(8.dp))
                     }
 
-                    RestaurantDetailOrder.RestaurantMenu -> { // 메뉴
-//                        Column(Modifier.padding(start = 8.dp, end = 8.dp)) {
-//                            RestaurantInfoTitle(title = "Menus")
-//                        }
-                    }
-
                     RestaurantDetailOrder.RestaurantMenus -> { // 메뉴
                         RestaurantMenus(restaurantId = restaurantId); Spacer(modifier = Modifier.height(16.dp))
                     }
@@ -81,10 +75,6 @@ fun RestaurantOverViewScreen(
                     RestaurantDetailOrder.RestaurantReviewSummary -> { // 리뷰 통계
                         RestaurantReviewSummary(restaurantId = restaurantId, progressTintColor = progressTintColor)
                         Spacer(modifier = Modifier.height(16.dp))
-                    }
-
-                    RestaurantDetailOrder.RestaurantReviews -> { // 리뷰
-                        //RestaurantReviews(restaurantId = restaurantId, progressTintColor = progressTintColor, onProfile = onProfile, onContents = onContents)
                     }
 
                     RestaurantDetailOrder.Feed -> { // 피드
