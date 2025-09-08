@@ -2,7 +2,6 @@ package com.sarang.torang.compose.restaurantdetail
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,7 +19,6 @@ import com.sarang.torang.compose.type.LocalPullToRefresh
 import com.sarang.torang.compose.restaurantdetail.feed.RestaurantFeeds
 import com.sarang.library.compose.restaurantdetail.gallery.RestaurantImages
 import com.sarang.torang.compose.restaurantdetail.menu.RestaurantMenus
-import com.sarang.library.compose.restaurantdetail.review.RestaurantReviews
 import com.sarang.torang.compose.restaurantdetail.summary.RestaurantReviewSummary
 
 enum class RestaurantDetailOrder {
@@ -35,22 +33,23 @@ enum class RestaurantDetailOrder {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RestaurantOverViewScreen(
-    tag                 : String                        = "__RestaurantOverViewScreen",
-    viewModel           : RestaurantOverviewViewModel   = hiltViewModel(),
-    restaurantId        : Int,
-    modifier            : Modifier                      = Modifier,
-    onRefresh           : () -> Unit                    = { Log.w(tag, "onRefresh is null") },
-    onLocation          : () -> Unit                    = { Log.w(tag, "onLocation is null") },
-    onWeb               : (String) -> Unit              = { Log.w(tag, "onWeb is null") },
-    onCall              : (String) -> Unit              = { Log.w(tag, "onCall is null") },
-    onImage             : (Int) -> Unit                 = { Log.w(tag, "onImage is null") },
-    progressTintColor   : Color?                        = null,
-    onProfile           : (Int) -> Unit                 = { Log.w(tag, "onProfile is null") },
-    onContents          : (Int) -> Unit                 = { Log.w(tag, "onContents is null") },
-    scrollBehavior      : TopAppBarScrollBehavior?      = null
+    tag                     : String                        = "__RestaurantOverViewScreen",
+    viewModel               : RestaurantOverviewViewModel   = hiltViewModel(),
+    restaurantId            : Int,
+    modifier                : Modifier                      = Modifier,
+    onRefresh               : () -> Unit                    = { Log.w(tag, "onRefresh is null") },
+    onLocation              : () -> Unit                    = { Log.w(tag, "onLocation is null") },
+    onWeb                   : (String) -> Unit              = { Log.w(tag, "onWeb is null") },
+    onCall                  : (String) -> Unit              = { Log.w(tag, "onCall is null") },
+    onImage                 : (Int) -> Unit                 = { Log.w(tag, "onImage is null") },
+    progressTintColor       : Color?                        = null,
+    onProfile               : (Int) -> Unit                 = { Log.w(tag, "onProfile is null") },
+    onContents              : (Int) -> Unit                 = { Log.w(tag, "onContents is null") },
+    scrollBehavior          : TopAppBarScrollBehavior?      = null,
+    isRefreshRestaurantInfo : Boolean                       = false
 ) {
 
-    LocalPullToRefresh.current.invoke(Modifier, viewModel.isLoading, { viewModel.onRefresh() }) {
+    LocalPullToRefresh.current.invoke(Modifier, isRefreshRestaurantInfo, { onRefresh.invoke() }) {
         LazyColumn(
             modifier = if (scrollBehavior != null) modifier.nestedScroll(scrollBehavior.nestedScrollConnection) else Modifier
         )
