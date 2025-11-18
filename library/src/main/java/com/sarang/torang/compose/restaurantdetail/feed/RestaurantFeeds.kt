@@ -10,7 +10,6 @@ fun RestaurantFeeds(
     restaurantId: Int,
     viewModel: RestaurantFeedsViewModel = hiltViewModel(),
 ) {
-
     val uiState = viewModel.uiState
 
     LaunchedEffect(restaurantId) {
@@ -18,8 +17,18 @@ fun RestaurantFeeds(
     }
 
     Column {
-            for (i in 0 until uiState.size) {
-                LocalRestaurantFeed.current.invoke(uiState[i], {}, {}, false, {}, 300, true)
-            }
+        for (i in 0 until uiState.size) {
+            LocalRestaurantFeed.current.invoke(
+                RestaurantFeedData(
+                    feed = uiState[i],
+                    onLike = {},
+                    onFavorite = {},
+                    isLogin = false,
+                    onVideoClick = {},
+                    imageHeight = 300,
+                    pageScrollAble = true
+                )
+            )
+        }
     }
 }

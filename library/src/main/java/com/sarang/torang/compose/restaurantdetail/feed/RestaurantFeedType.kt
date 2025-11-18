@@ -7,22 +7,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
 import com.sarang.torang.data.FeedInRestaurant
 
-typealias RestaurantFeedType = @Composable (
-    feed: FeedInRestaurant,
-    onLike: (Int) -> Unit,
-    onFavorite: (Int) -> Unit,
-    isLogin: Boolean,
-    onVideoClick: () -> Unit,
-    imageHeight: Int,
-    pageScrollAble: Boolean
-) -> Unit
+typealias RestaurantFeedType = @Composable (RestaurantFeedData) -> Unit
+
+data class RestaurantFeedData(
+    val feed: FeedInRestaurant,
+    val onLike: (Int) -> Unit,
+    val onFavorite: (Int) -> Unit,
+    val isLogin: Boolean,
+    val onVideoClick: () -> Unit,
+    val imageHeight: Int,
+    val pageScrollAble: Boolean
+)
 
 val LocalRestaurantFeed = compositionLocalOf<RestaurantFeedType> {
-    @Composable { feed, _, _, _, _, _, _ ->
+    @Composable {
         Log.w("__LocalFeedCompose", "feed compose isn't set")
         Row {
-            Text(feed.name)
-            Text(feed.restaurantName)
+            Text(it.feed.name)
+            Text(it.feed.restaurantName)
         }
     }
 }
