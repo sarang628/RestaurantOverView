@@ -44,7 +44,6 @@ import com.sarang.torang.di.restaurant_overview_di.restaurantOverViewRestaurantI
 import com.sarang.torang.repository.FindRepository
 import com.sryang.torang.ui.TorangTheme
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -66,7 +65,8 @@ class MainActivity : ComponentActivity() {
                 var restaurantId by remember { mutableStateOf(0) }
                 CompositionLocalProvider(
                     LocalRestaurantOverViewImageLoader    provides restaurantOverViewImageLoader,
-                    LocalRestaurantOverviewRestaurantInfo provides restaurantOverViewRestaurantInfo(RootNavController(), viewModel),
+                    LocalRestaurantOverviewRestaurantInfo provides restaurantOverViewRestaurantInfo(
+                        rootNavController = RootNavController(), viewModel = viewModel),
                     LocalRestaurantFeed                   provides CustomRestaurantFeedType,
                     LocalExpandableTextType               provides CustomExpandableTextType,
                     LocalFeedImageLoader                  provides CustomFeedImageLoader(),

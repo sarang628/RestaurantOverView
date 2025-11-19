@@ -33,10 +33,10 @@ enum class RestaurantDetailOrder {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RestaurantOverViewScreen(
+    modifier                : Modifier                      = Modifier,
     tag                     : String                        = "__RestaurantOverViewScreen",
     viewModel               : RestaurantOverviewViewModel   = hiltViewModel(),
     restaurantId            : Int,
-    modifier                : Modifier                      = Modifier,
     onRefresh               : () -> Unit                    = { Log.w(tag, "onRefresh is null") },
     onLocation              : () -> Unit                    = { Log.w(tag, "onLocation is null") },
     onWeb                   : (String) -> Unit              = { Log.w(tag, "onWeb is null") },
@@ -54,8 +54,8 @@ fun RestaurantOverViewScreen(
             modifier = if (scrollBehavior != null) modifier.nestedScroll(scrollBehavior.nestedScrollConnection) else Modifier
         )
         {
-            items(RestaurantDetailOrder.values().size) {
-                when(RestaurantDetailOrder.values()[it]){
+            items(RestaurantDetailOrder.entries.size) {
+                when(RestaurantDetailOrder.entries[it]){
                     RestaurantDetailOrder.RestaurantInfo -> { // 레스토랑 기본정보
                         LocalRestaurantOverviewRestaurantInfo.current.invoke(restaurantId)
                         Spacer(modifier = Modifier.height(8.dp))
