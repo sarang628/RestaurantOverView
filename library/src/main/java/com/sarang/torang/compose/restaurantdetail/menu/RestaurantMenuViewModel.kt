@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sarang.library.data.MenuData
-import com.sarang.library.usecase.GetMenuUseCase
+import com.sarang.torang.usecase.restaurantoverview.GetMenuUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -1,4 +1,4 @@
-package com.sarang.library.usecase
+package com.sarang.torang.usecase.restaurantoverview
 
 import com.sarang.library.data.RestaurantImage
 

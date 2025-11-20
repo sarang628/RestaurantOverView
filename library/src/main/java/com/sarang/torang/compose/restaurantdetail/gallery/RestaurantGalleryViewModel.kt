@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sarang.library.data.RestaurantImage
-import com.sarang.library.usecase.GetRestaurantGalleryUseCase
+import com.sarang.torang.usecase.restaurantoverview.GetRestaurantGalleryUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -7,7 +7,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sarang.library.data.ReviewRowData
-import com.sarang.library.usecase.FetchReviewsUseCase
+import com.sarang.torang.usecase.restaurantoverview.FetchReviewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
