@@ -107,7 +107,7 @@ class MainActivity : ComponentActivity() {
                                 scaffoldState.bottomSheetState.partialExpand()
                             }
                         }) {
-                            Text(it.restaurant.restaurantName)
+                            Text("${it.restaurant.restaurantName}(${it.restaurant.restaurantId})")
                         }
                     }
                 }
@@ -118,7 +118,8 @@ class MainActivity : ComponentActivity() {
 
 
                 FloatingActionButton(
-                    modifier = Modifier.align(Alignment.BottomEnd)
+                    modifier = Modifier
+                        .align(Alignment.BottomEnd)
                         .padding(bottom = 24.dp, end = 12.dp),
                     onClick = {
                         scope.launch {
