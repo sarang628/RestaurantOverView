@@ -15,6 +15,8 @@ import androidx.compose.material3.BottomSheetScaffold
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberBottomSheetScaffoldState
@@ -26,6 +28,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
@@ -95,27 +98,35 @@ class MainActivity : ComponentActivity() {
         val scaffoldState = rememberBottomSheetScaffoldState()
         val scope = rememberCoroutineScope()
         var restaurantId by remember { mutableStateOf(0) }
-        BottomSheetScaffold(
-            scaffoldState = scaffoldState,
-            sheetPeekHeight = 0.dp,
-            sheetContent = {
-                LazyColumn(Modifier.fillMaxSize()) {
-                    items(restaurants.reversed()){
-                        TextButton({
-                            restaurantId = it.restaurant.restaurantId
-                            scope.launch {
-                                scaffoldState.bottomSheetState.partialExpand()
-                            }
-                        }) {
-                            Text("${it.restaurant.restaurantName}(${it.restaurant.restaurantId})")
+        val context = LocalContext.current
+        val snackbarHostState = remember { SnackbarHostState() }
+
+
+        val sheetContent: @Composable () -> Unit = {
+            LazyColumn(Modifier.fillMaxSize()) {
+                items(restaurants.reversed()) {
+                    TextButton({
+                        restaurantId = it.restaurant.restaurantId
+                        scope.launch {
+                            scaffoldState.bottomSheetState.partialExpand()
                         }
+                    }) {
+                        Text("${it.restaurant.restaurantName}(${it.restaurant.restaurantId})")
                     }
                 }
             }
-        ) {
-            Box(Modifier.fillMaxSize()){
-                ProvideRestaurantOverview(restaurantId)
+        }
 
+        val content : @Composable () -> Unit = {
+            Box(Modifier.fillMaxSize()){
+                ProvideRestaurantOverview(
+                    restaurantId = restaurantId,
+                    onErrorMessage = {
+                        scope.launch {
+                            snackbarHostState.showSnackbar(it)
+                        }
+                    }
+                )
 
                 FloatingActionButton(
                     modifier = Modifier
@@ -132,6 +143,19 @@ class MainActivity : ComponentActivity() {
                     Icon(Icons.AutoMirrored.Default.List, null)
                 }
             }
+        }
+
+        BottomSheetScaffold(
+            scaffoldState = scaffoldState,
+            sheetPeekHeight = 0.dp,
+            sheetContent = { sheetContent.invoke() },
+            snackbarHost = {
+                SnackbarHost(
+                    hostState = snackbarHostState
+                )
+            }
+        ) {
+            content()
         }
     }
 }

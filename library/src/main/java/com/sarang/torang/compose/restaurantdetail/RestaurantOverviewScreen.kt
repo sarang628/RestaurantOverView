@@ -46,7 +46,8 @@ fun RestaurantOverViewScreen(
     onProfile               : (Int) -> Unit                 = { Log.w(tag, "onProfile is null") },
     onContents              : (Int) -> Unit                 = { Log.w(tag, "onContents is null") },
     scrollBehavior          : TopAppBarScrollBehavior?      = null,
-    isRefreshRestaurantInfo : Boolean                       = false
+    isRefreshRestaurantInfo : Boolean                       = false,
+    onErrorMessage          : (String) -> Unit              = {}
 ) {
 
     LocalPullToRefresh.current.invoke(Modifier, isRefreshRestaurantInfo, { onRefresh.invoke() }) {
@@ -79,7 +80,10 @@ fun RestaurantOverViewScreen(
                     RestaurantDetailOrder.Feed -> { // 피드
                         Box(Modifier.padding(start = 8.dp, end = 8.dp)) { RestaurantInfoTitle(title = "Reviews") }
                         Spacer(Modifier.height(8.dp))
-                        RestaurantFeeds(restaurantId = restaurantId)
+                        RestaurantFeeds(
+                            restaurantId = restaurantId,
+                            onErrorMessage = onErrorMessage
+                        )
                     }
 
                     RestaurantDetailOrder.RestaurantReservation -> {

@@ -12,6 +12,7 @@ import com.sarang.torang.usecase.restaurantoverview.FetchReviewsUseCase
 import com.sarang.torang.usecase.restaurantoverview.OnLikeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.util.Stack
 import javax.inject.Inject
@@ -24,7 +25,8 @@ class RestaurantFeedsViewModel @Inject constructor(
 
     var uiState: List<FeedInRestaurant> by mutableStateOf(ArrayList())
     val tag = "__RestaurantFeedsViewModel"
-    var errorMessage = mutableStateListOf<String>(); private set
+    private var _errorMessage : MutableStateFlow<List<String>> = MutableStateFlow(listOf());
+    var errorMessage : StateFlow<List<String>> = _errorMessage
 
     fun fetch(restaurantId: Int) {
         viewModelScope.launch {
@@ -39,7 +41,7 @@ class RestaurantFeedsViewModel @Inject constructor(
                 onLikeUseCase.invoke(reviewId)
             }catch (e : Exception){
                 e.message?.let {
-                    errorMessage.add(it)
+                    _errorMessage.value = errorMessage.value + it
                     Log.e(tag, it)
                 }
             }
@@ -48,5 +50,10 @@ class RestaurantFeedsViewModel @Inject constructor(
 
     fun onFavorite(reviewId : Int){
         Log.d(tag, "onFavorite reviewId: $reviewId")
+    }
+
+    fun onErrorMessage() {
+        if(_errorMessage.value.isNotEmpty())
+            _errorMessage.value = _errorMessage.value.dropLast(0)
     }
 }

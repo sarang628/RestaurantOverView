@@ -19,9 +19,11 @@ fun RestaurantFeeds(
     }
 
     LaunchedEffect(Unit) {
-        if(viewModel.errorMessage.isNotEmpty()){
-            onErrorMessage.invoke(viewModel.errorMessage[0])
-            viewModel.errorMessage.removeAt(0)
+        viewModel.errorMessage.collect {
+            if(it.isNotEmpty()) {
+                onErrorMessage.invoke(it[0])
+                viewModel.onErrorMessage()
+            }
         }
     }
 
