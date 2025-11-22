@@ -23,15 +23,15 @@ class RestaurantReviewViewModel @Inject constructor(
     fun fetch(restaurantId: Int) {
         viewModelScope.launch {
             try {
-                uiState = fetchReviewUseCase.invoke(restaurantId).map {
-                    ReviewRowData(
+                fetchReviewUseCase.invoke(restaurantId).collect {
+                    uiState = it.map { ReviewRowData(
                         name = it.name,
                         fullName = it.name,
                         rating = it.rating,
                         comment = it.contents,
                         userId = it.userId,
                         reviewId = it.reviewId
-                    )
+                    ) }
                 }
             }catch (e : Exception){
                 Log.e(tag, "$e")

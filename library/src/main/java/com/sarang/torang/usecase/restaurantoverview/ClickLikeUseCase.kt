@@ -1,5 +1,5 @@
 package com.sarang.torang.usecase.restaurantoverview
 
-interface OnLikeUseCase {
+interface ClickLikeUseCase {
     suspend fun invoke(reviewId : Int)
 }

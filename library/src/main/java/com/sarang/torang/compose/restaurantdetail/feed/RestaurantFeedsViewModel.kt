@@ -2,25 +2,23 @@ package com.sarang.torang.compose.restaurantdetail.feed
 
 import android.util.Log
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sarang.torang.data.FeedInRestaurant
 import com.sarang.torang.usecase.restaurantoverview.FetchReviewsUseCase
-import com.sarang.torang.usecase.restaurantoverview.OnLikeUseCase
+import com.sarang.torang.usecase.restaurantoverview.ClickLikeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import java.util.Stack
 import javax.inject.Inject
 
 @HiltViewModel
 class RestaurantFeedsViewModel @Inject constructor(
     val fetchReviewUseCase  : FetchReviewsUseCase,
-    val onLikeUseCase       : OnLikeUseCase
+    val clickLikeUseCase       : ClickLikeUseCase
 ) : ViewModel() {
 
     var uiState: List<FeedInRestaurant> by mutableStateOf(ArrayList())
@@ -30,7 +28,9 @@ class RestaurantFeedsViewModel @Inject constructor(
 
     fun fetch(restaurantId: Int) {
         viewModelScope.launch {
-            uiState = fetchReviewUseCase.invoke(restaurantId)
+            fetchReviewUseCase.invoke(restaurantId).collect {
+                uiState = it
+            }
         }
     }
 
@@ -38,7 +38,7 @@ class RestaurantFeedsViewModel @Inject constructor(
         Log.d(tag, "onLike reviewId: $reviewId")
         viewModelScope.launch {
             try {
-                onLikeUseCase.invoke(reviewId)
+                clickLikeUseCase.invoke(reviewId)
             }catch (e : Exception){
                 e.message?.let {
                     _errorMessage.value = errorMessage.value + it
