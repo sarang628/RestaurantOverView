@@ -21,7 +21,8 @@ data class FeedInRestaurant(
     val visibleLike: Boolean,
     val visibleComment: Boolean,
     val contents: String,
-    val reviewImages: List<FeedImageInRestaurant> = listOf()
+    val reviewImages: List<FeedImageInRestaurant> = listOf(),
+    val createDate : String
 ) {
     companion object {
         fun empty() = FeedInRestaurant(
@@ -45,7 +46,8 @@ data class FeedInRestaurant(
             visibleLike = true,
             visibleComment = true,
             contents = "contents",
-            reviewImages = listOf()
+            reviewImages = listOf(),
+            createDate = ""
         )
     }
 }
