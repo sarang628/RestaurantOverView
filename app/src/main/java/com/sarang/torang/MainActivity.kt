@@ -97,7 +97,7 @@ class MainActivity : ComponentActivity() {
         val restaurants by findRepository.restaurants.collectAsStateWithLifecycle()
         val scaffoldState = rememberBottomSheetScaffoldState()
         val scope = rememberCoroutineScope()
-        var restaurantId by remember { mutableStateOf(0) }
+        var restaurantId by remember { mutableStateOf(299) }
         val context = LocalContext.current
         val snackbarHostState = remember { SnackbarHostState() }
 
