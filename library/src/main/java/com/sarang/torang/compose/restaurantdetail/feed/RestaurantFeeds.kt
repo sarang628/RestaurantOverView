@@ -3,7 +3,10 @@ package com.sarang.torang.compose.restaurantdetail.feed
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
@@ -13,6 +16,7 @@ fun RestaurantFeeds(
     onErrorMessage : (String) -> Unit = {}
 ) {
     val uiState = viewModel.uiState
+    val isLogin by viewModel.isLogin.collectAsStateWithLifecycle()
 
     LaunchedEffect(restaurantId) {
         viewModel.fetch(restaurantId)
@@ -34,7 +38,7 @@ fun RestaurantFeeds(
                     feed = uiState[i],
                     onLike = viewModel::onLike,
                     onFavorite = viewModel::onFavorite,
-                    isLogin = false,
+                    isLogin = isLogin,
                     onVideoClick = {},
                     imageHeight = 300,
                     pageScrollAble = true
