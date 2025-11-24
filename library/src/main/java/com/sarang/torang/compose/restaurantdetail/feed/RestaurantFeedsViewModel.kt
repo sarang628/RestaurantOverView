@@ -43,7 +43,7 @@ class RestaurantFeedsViewModel @Inject constructor(
         fetch = viewModelScope.launch {
             fetchReviewUseCase.invoke(restaurantId).collectLatest {
                 Log.d(tag, "collected : ${it.map { 
-                    "reviewId: ${it.reviewId}, isLike: ${it.isLike}, createDate: ${it.createDate}" 
+                    "${it.reviewImages[0].width} * ${it.reviewImages[0].height}" 
                 }}")
                 uiState = it
             }

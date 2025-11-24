@@ -40,7 +40,6 @@ fun RestaurantFeeds(
                     onFavorite = viewModel::onFavorite,
                     isLogin = isLogin,
                     onVideoClick = {},
-                    imageHeight = 300,
                     pageScrollAble = true
                 )
             )

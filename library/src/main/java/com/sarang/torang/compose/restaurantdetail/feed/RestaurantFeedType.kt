@@ -15,7 +15,6 @@ data class RestaurantFeedData(
     val onFavorite: (Int) -> Unit,
     val isLogin: Boolean,
     val onVideoClick: () -> Unit,
-    val imageHeight: Int,
     val pageScrollAble: Boolean
 )
 
