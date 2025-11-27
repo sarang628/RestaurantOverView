@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
             TorangTheme {
 
                 Box(Modifier.fillMaxSize()){
-                    Test(loginRepository)
+                    RestaurantOverViewTest(loginRepository)
                 }
 
             }
@@ -64,7 +64,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun Test(loginRepository: LoginRepository){
+    fun RestaurantOverViewTest(loginRepository: LoginRepository){
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = "Menu"){
             composable("Menu"){

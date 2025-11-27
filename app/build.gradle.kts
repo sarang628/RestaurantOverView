@@ -120,6 +120,11 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer-hls:1.4.0")
     implementation(libs.bottomdetectlazycolunm)
     implementation(libs.expandableText)
+    implementation(libs.dialogsBox)
+    implementation(libs.torangBottomSheet)
+    implementation(libs.comment)
+    implementation(libs.constraintlayout.compose)
+    implementation(libs.report)
 
     implementation("io.coil-kt:coil-compose:2.6.0")
 }
