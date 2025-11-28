@@ -56,7 +56,7 @@ class MainActivity : ComponentActivity() {
             TorangTheme {
 
                 Box(Modifier.fillMaxSize()){
-                    RestaurantOverViewTest(loginRepository)
+                    RestaurantOverViewTestMenu(loginRepository)
                 }
 
             }
@@ -64,7 +64,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    fun RestaurantOverViewTest(loginRepository: LoginRepository){
+    fun RestaurantOverViewTestMenu(loginRepository: LoginRepository){
         val navController = rememberNavController()
         NavHost(navController = navController, startDestination = "Menu"){
             composable("Menu"){
@@ -100,6 +100,7 @@ class MainActivity : ComponentActivity() {
         var restaurantId by remember { mutableStateOf(301) }
         val context = LocalContext.current
         val snackbarHostState = remember { SnackbarHostState() }
+        val rootNavController = RootNavController()
 
 
         val sheetContent: @Composable () -> Unit = {
@@ -125,7 +126,8 @@ class MainActivity : ComponentActivity() {
                         scope.launch {
                             snackbarHostState.showSnackbar(it)
                         }
-                    }
+                    },
+                    rootNavController = rootNavController
                 )
 
                 FloatingActionButton(
