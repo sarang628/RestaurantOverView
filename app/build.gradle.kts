@@ -125,6 +125,8 @@ dependencies {
     implementation(libs.comment)
     implementation(libs.constraintlayout.compose)
     implementation(libs.report)
+    implementation(libs.shortForm)
+    implementation(libs.androidx.lifecycle.process)
 
     implementation("io.coil-kt:coil-compose:2.6.0")
 }

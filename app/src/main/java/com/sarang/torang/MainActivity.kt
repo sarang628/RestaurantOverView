@@ -94,7 +94,7 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun OverViewTest(){
-        val restaurants by findRepository.restaurants.collectAsStateWithLifecycle()
+        val restaurants by findRepository.restaurants.collectAsStateWithLifecycle(emptyList())
         val scaffoldState = rememberBottomSheetScaffoldState()
         val scope = rememberCoroutineScope()
         var restaurantId by remember { mutableStateOf(301) }
