@@ -99,6 +99,7 @@ dependencies {
     implementation(libs.material3.windows.size)
     implementation(libs.lifecycle.runtime.compose)
 
+
     implementation(libs.torangRepository)
     implementation(libs.torangnetwork)
     implementation(libs.torangdatabase)
@@ -116,8 +117,6 @@ dependencies {
     implementation(libs.mui3scrolltorefresh)
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.ui)
-    implementation("androidx.media3:media3-session:1.4.0")
-    implementation("androidx.media3:media3-exoplayer-hls:1.4.0")
     implementation(libs.bottomdetectlazycolunm)
     implementation(libs.expandableText)
     implementation(libs.dialogsBox)
@@ -126,7 +125,9 @@ dependencies {
     implementation(libs.constraintlayout.compose)
     implementation(libs.report)
     implementation(libs.shortForm)
-    implementation(libs.androidx.lifecycle.process)
 
     implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation("androidx.media3:media3-session:1.4.0")
+    implementation("androidx.media3:media3-exoplayer-hls:1.4.0")
+    implementation(libs.androidx.lifecycle.process)
 }

@@ -45,7 +45,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-
     @Inject lateinit var findRepository : FindRepository
     @Inject lateinit var loginRepository: LoginRepository
 
@@ -53,112 +52,21 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            val scope = rememberCoroutineScope()
             TorangTheme {
-
                 Box(Modifier.fillMaxSize()){
-                    RestaurantOverViewTestMenu(loginRepository)
-                }
-
-            }
-        }
-    }
-
-    @Composable
-    fun RestaurantOverViewTestMenu(loginRepository: LoginRepository){
-        val navController = rememberNavController()
-        NavHost(navController = navController, startDestination = "Menu"){
-            composable("Menu"){
-                Column {
-                    TextButton({
-                        navController.navigate("loginRepository")
-                    }) {
-                        Text("LoginRepository")
-                    }
-
-                    TextButton({
-                        navController.navigate("RestaurantOverView")
-                    }) {
-                        Text("RestaurantOverView")
-                    }
+                    RestaurantOverViewTestMenu(
+                        loginRepositoryTest = { LoginRepositoryTest(loginRepository) },
+                        overViewTest        = { OverViewTest(findRepository = findRepository,{ id, state ->
+                                                ProvideRestaurantOverview(
+                                                    restaurantId = id,
+                                                    onErrorMessage = { scope.launch { state.showSnackbar(it) } },
+                                                    rootNavController = RootNavController()
+                                                )})
+                                              }
+                    )
                 }
             }
-            composable("LoginRepository"){
-                LoginRepositoryTest(loginRepository)
-            }
-            composable("RestaurantOverView"){
-                OverViewTest()
-            }
-        }
-    }
-
-    @OptIn(ExperimentalMaterial3Api::class)
-    @Composable
-    fun OverViewTest(){
-        val restaurants by findRepository.restaurants.collectAsStateWithLifecycle(emptyList())
-        val scaffoldState = rememberBottomSheetScaffoldState()
-        val scope = rememberCoroutineScope()
-        var restaurantId by remember { mutableStateOf(301) }
-        val context = LocalContext.current
-        val snackbarHostState = remember { SnackbarHostState() }
-        val rootNavController = RootNavController()
-
-
-        val sheetContent: @Composable () -> Unit = {
-            LazyColumn(Modifier.fillMaxSize()) {
-                items(restaurants.reversed()) {
-                    TextButton({
-                        restaurantId = it.restaurant.restaurantId
-                        scope.launch {
-                            scaffoldState.bottomSheetState.partialExpand()
-                        }
-                    }) {
-                        Text("${it.restaurant.restaurantName}(${it.restaurant.restaurantId})")
-                    }
-                }
-            }
-        }
-
-        val content : @Composable () -> Unit = {
-            Box(Modifier.fillMaxSize()){
-                ProvideRestaurantOverview(
-                    restaurantId = restaurantId,
-                    onErrorMessage = {
-                        scope.launch {
-                            snackbarHostState.showSnackbar(it)
-                        }
-                    },
-                    rootNavController = rootNavController
-                )
-
-                FloatingActionButton(
-                    modifier = Modifier
-                        .align(Alignment.BottomEnd)
-                        .padding(bottom = 24.dp, end = 12.dp),
-                    onClick = {
-                        scope.launch {
-                            scope.launch {
-                                findRepository.findFilter()
-                            }
-                            scaffoldState.bottomSheetState.expand()
-                        }
-                    }) {
-                    Icon(Icons.AutoMirrored.Default.List, null)
-                }
-            }
-        }
-
-        BottomSheetScaffold(
-            scaffoldState = scaffoldState,
-            sheetPeekHeight = 0.dp,
-            sheetContent = { sheetContent.invoke() },
-            snackbarHost = {
-                SnackbarHost(
-                    hostState = snackbarHostState
-                )
-            }
-        ) {
-            content()
         }
     }
 }
-
