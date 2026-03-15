@@ -24,7 +24,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.sarang.torang.repository.FindRepository
@@ -32,8 +31,8 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OverViewTest( findRepository : FindRepository,
-                  overviewCompose : @Composable (Int, SnackbarHostState) -> Unit = {_,_->}){
+fun OverViewTestContainer(findRepository : FindRepository,
+                          overviewCompose : @Composable (Int, SnackbarHostState) -> Unit = {_,_->}){
     val restaurants by findRepository.restaurants.collectAsStateWithLifecycle(emptyList())
     val scaffoldState = rememberBottomSheetScaffoldState()
     val scope = rememberCoroutineScope()
