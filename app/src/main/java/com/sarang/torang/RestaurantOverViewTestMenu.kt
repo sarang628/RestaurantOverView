@@ -13,7 +13,6 @@ fun RestaurantOverViewTestMenu(loginRepositoryTest : @Composable () -> Unit = {}
                                restaurantOverView : @Composable () -> Unit = {},
                                restaurantImages : @Composable () -> Unit = {},
                                restaurantMenus : @Composable () -> Unit = {},
-                               restaurantReviewSummary : @Composable () -> Unit = {},
                                restaurantFeeds : @Composable () -> Unit = {},
                                restaurantReservation : @Composable () -> Unit = {},
                                restaurantInfoTitle : @Composable () -> Unit = {},
@@ -76,7 +75,6 @@ fun RestaurantOverViewTestMenu(loginRepositoryTest : @Composable () -> Unit = {}
         composable("RestaurantOverView"){ restaurantOverView() }
         composable("RestaurantImages"){ restaurantImages() }
         composable("RestaurantMenus"){ restaurantMenus() }
-        composable("RestaurantReviewSummary"){ restaurantReviewSummary() }
         composable("RestaurantFeeds"){ restaurantFeeds() }
         composable("RestaurantReservation"){ restaurantReservation() }
         composable("RestaurantInfoTitle"){ restaurantInfoTitle() }

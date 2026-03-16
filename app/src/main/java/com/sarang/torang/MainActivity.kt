@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.sarang.library.compose.restaurantdetail.gallery.RestaurantImages
 import com.sarang.torang.compose.feed.internal.components.type.LocalExpandableTextType
@@ -15,7 +14,6 @@ import com.sarang.torang.compose.restaurantdetail.RestaurantReservation
 import com.sarang.torang.compose.restaurantdetail.feed.LocalRestaurantFeed
 import com.sarang.torang.compose.restaurantdetail.feed.RestaurantFeeds
 import com.sarang.torang.compose.restaurantdetail.menu.RestaurantMenus
-import com.sarang.torang.compose.restaurantdetail.summary.RestaurantReviewSummary
 import com.sarang.torang.compose.type.LocalRestaurantOverViewImageLoader
 import com.sarang.torang.di.basefeed_di.CustomExpandableTextType
 import com.sarang.torang.di.basefeed_di.CustomFeedImageLoader
@@ -51,7 +49,6 @@ class MainActivity : ComponentActivity() {
                                                      RestaurantImages(restaurantId = restaurantId) }
                                                    },
                         restaurantMenus          = { RestaurantMenus(restaurantId = restaurantId) },
-                        restaurantReviewSummary  = { RestaurantReviewSummary(restaurantId = restaurantId) },
                         restaurantFeeds          = { CompositionLocalProvider(LocalRestaurantFeed        provides customRestaurantFeedType(rootNavController = RootNavController()),
                                                                              LocalExpandableTextType               provides CustomExpandableTextType,
                                                                              LocalFeedImageLoader                  provides CustomFeedImageLoader()){
